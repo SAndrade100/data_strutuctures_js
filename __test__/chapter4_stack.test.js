@@ -7,6 +7,22 @@ describe('Stack', () => {
 		stack = new Stack()
 	})
 
+    it('should convert decimal to binary', () => {
+        let number = 100
+        let rem
+        let binaryString = ''
+        while(number > 0) {
+            rem = Math.floor(number % 2)
+            stack.push(rem)
+            number = Math.floor(number / 2)
+        }
+        while(!stack.isEmpty()) {
+            binaryString += stack.pop()
+        }
+
+        expect(binaryString).toBe('1100100')
+    })
+
 	it('clear should empty the stack', () => {
         stack.push(1)
         stack.push(2)
@@ -35,4 +51,5 @@ describe('Stack', () => {
 
         expect(stack.peek()).toBe(undefined)
     })
+
 })
